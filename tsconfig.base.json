@@ -9,10 +9,12 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
+    "strictPropertyInitialization": false,
     "baseUrl": ".",
     "paths": {
       "@backend/*": ["./backend/src/*"],
-      "@frontend/*": ["./frontend/src/*"]
+      "@frontend/*": ["./frontend/src/*"],
+      "@shared/*": ["./shared/*"]
     }
   }
 }

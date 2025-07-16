@@ -5,15 +5,16 @@ import react from 'eslint-plugin-react';
 import globals from 'globals';
 
 export default [
+  { ignores: ['**/dist/**', '**/*.d.ts'] },
   js.configs.recommended,
   {
-    files: ['backend/**/*.ts'],
+    files: ['backend/**/*.ts', 'shared/**/*.ts'],
     languageOptions: {
       parser,
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
-        project: ['./backend/tsconfig.json'],
+        project: ['./backend/tsconfig.json', './shared/tsconfig.json'],
       },
       globals: {
         ...globals.node,
@@ -22,6 +23,19 @@ export default [
     },
     plugins: {
       '@typescript-eslint': plugin,
+    },
+    rules: {
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^',
+          varsIgnorePattern: '^',
+          caughtErrorsIgnorePattern: '^',
+          ignoreRestSiblings: true,
+          args: 'after-used',
+        },
+      ],
     },
   },
   {
